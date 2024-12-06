@@ -22,7 +22,7 @@
 </head>
 
 <body>
-  <main class="h-screen p-4 bg-gray-1">
+  <main class="h-screen p-4 bg-gray-1 overflow-hidden">
     <!-- Login -->
     <section class="h-full flex">
       <div class="flex flex-col justify-between w-2/4 p-8 rounded-[18px] bg-thumb bg-cover bg-no-repeat">
@@ -35,37 +35,76 @@
       </div>
   
       <div class="w-2/4 text-gray-5 pt-[135px]">
-        <div class="mx-auto w-[328px] font-nunito">
-          <header>
-            <nav class="flex gap-1 p-1 rounded-[10px] bg-gray-2 text-center">
-              <a href="" class="flex-1 px-3 py-2 rounded-md bg-gray-3 text-purple-light outline-none focus:outline-purple-base">Login</a>
-              <a href="" class="flex-1 px-3 py-2 rounded-md outline-none focus:outline-purple-base">Cadastro</a>
-            </nav>
+        <div class="flex flex-col font-nunito">
+          <header class="flex gap-1 w-[328px] mx-auto p-1 rounded-[10px] bg-gray-2 text-center">
+            <div class="relative flex-1 rounded-md">
+              <input type="checkbox" id="btn1" class="checkbox absolute opacity-0 pointer-events-none" checked >
+              <label for="btn1" class="block w-full h-full px-3 py-2 rounded-md focus:outline-purple-base cursor-pointer">Login </label>           
+            </div>
+            
+            <div class="relative flex-1 rounded-md">
+              <input type="checkbox" id="btn2" class="checkbox absolute opacity-0 pointer-events-none" >
+              <label for="btn2" class="block w-full h-full px-3 py-2 rounded-md focus:outline-purple-base cursor-pointer">Cadastro </label> 
+            </div>
           </header>
-    
-          <div class="text-center">
-            <h1 class="mt-[52px] mb-5 text-2xl text-gray-7 text-start font-rammetto">Acesse sua conta</h1>
-    
-            <form action="">
-              <div class="flex flex-col gap-4">
-                <div class="flex items-center relative">
-                  <i class="ph ph-envelope text-xl absolute left-4 pointer-events-none"></i>
-                  <input type="email" name="email" placeholder="E-mail" class="flex-1 pl-11 px-4 py-3 border border-gray-3 rounded-md bg-transparent placeholder:text-gray-5 outline-none hover:outline-purple-base focus:outline-purple-base" />
+
+          <div class="flex gap-80 ml-4 overflow-hidden">
+            <!-- Login -->
+            <section id="login" class="text-center ml-[270px]">
+              <h1 class="w-[328px] mt-[52px] mb-5 text-2xl text-gray-7 text-start font-rammetto">Acesse sua conta</h1>
+      
+              <form action="">
+                <div class="flex flex-col gap-4">
+                  <div class="flex items-center relative">
+                    <input type="email" name="email" placeholder="E-mail" class="inpForm" required />
+                    <i class="ph ph-envelope text-xl absolute left-4 pointer-events-none"></i>
+                    <i class="ph-fill ph-x-circle text-xl text-gray-4 absolute right-4 cursor-pointer hover:text-purple-base"></i>
+                  </div>
+      
+                  <div class="flex items-center relative">
+                    <input type="password" name="senha" placeholder="Senha" class="inpForm" required />
+                    <i class="ph ph-password text-xl absolute left-4 pointer-events-none"></i>
+                    <i class="ph-fill ph-x-circle text-xl text-gray-4 absolute right-4 cursor-pointer hover:text-purple-base"></i>
+                  </div>
                 </div>
-    
-                <div class="flex items-center relative">
-                  <i class="ph ph-password text-xl absolute left-4 pointer-events-none"></i>
-                  <input type="password" name="senha" placeholder="Senha" class="flex-1 pl-11 px-4 py-3 border border-gray-3 rounded-md bg-transparent placeholder:text-gray-5 outline-none hover:outline-purple-base focus:outline-purple-base" />
+      
+                <button type="submit" class="w-full mt-8 px-5 py-3 rounded-md bg-purple-base text-white hover:bg-purple-light hover:shadow-buttonHover focus:bg-purple-light focus:shadow-buttonHover outline-none">Entrar</button>
+              </form>
+            </section>
+  
+            <!-- Cadastro -->
+            <section id="register" class="text-center w-[328px]">
+              <h1 class="mt-[52px] mb-5 text-2xl text-gray-7 text-start font-rammetto">Crie sua conta</h1>
+      
+              <form action="">
+                <div class="flex flex-col gap-4">
+                  <div class="flex items-center relative">
+                    <input type="text" name="nome" placeholder="Nome" class="inpForm" required />
+                    <i class="ph ph-user text-xl absolute left-4 pointer-events-none"></i>
+                    <i class="ph-fill ph-x-circle text-xl text-gray-4 absolute right-4 cursor-pointer hover:text-purple-base"></i>
+                  </div>
+
+                  <div class="flex items-center relative">
+                    <input type="email" name="email" placeholder="E-mail" class="inpForm" required />
+                    <i class="ph ph-envelope text-xl absolute left-4 pointer-events-none"></i>
+                    <i class="ph-fill ph-x-circle text-xl text-gray-4 absolute right-4 cursor-pointer hover:text-purple-base"></i>
+                  </div>
+      
+                  <div class="flex items-center relative">
+                    <input type="password" name="senha" placeholder="Senha" class="inpForm" required />
+                    <i class="ph ph-password text-xl absolute left-4 pointer-events-none"></i>
+                    <i class="ph-fill ph-x-circle text-xl text-gray-4 absolute right-4 cursor-pointer hover:text-purple-base"></i>
+                  </div>
                 </div>
-              </div>
-    
-              <button type="submit" class="w-full mt-8 px-5 py-3 rounded-md bg-purple-base text-white hover:bg-purple-light hover:shadow-buttonHover focus:bg-purple-light focus:shadow-buttonHover outline-none">Entrar</button>
-            </form>
+      
+                <button type="submit" class="w-full mt-8 px-5 py-3 rounded-md bg-purple-base text-white hover:bg-purple-light hover:shadow-buttonHover focus:bg-purple-light focus:shadow-buttonHover outline-none">Criar</button>
+              </form>
+            </section>
           </div>
-        </div>
       </div>
     </section>
   </main>
   <script src="/tailwindCustom.js"></script>
+  <script src="/script.js"></script>
 </body>
 </html>
