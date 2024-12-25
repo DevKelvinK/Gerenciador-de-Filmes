@@ -1,5 +1,4 @@
 /* Checked e Focus dos botões da tela de Login e Cadastro */
-
 .checkbox:focus ~ label{
   outline: 2px solid #892CCD;
 }
@@ -10,7 +9,6 @@
 }
 
 /* Inputs forms Login e Cadastro */
-
 .inpForm {
   flex: 1;
   padding: 0.75rem 1rem 0.75rem 2.75rem;
@@ -30,20 +28,21 @@
   color: #7A7B9F;
 }
 
-.inpForm:valid ~ i.ph {
+.inpForm.valid:valid ~ i.ph {
   color: #892CCD;
 }
 
 /* Animação para alterar os containers Login e Cadastro */
-
 #login {
   transition: all .2s ease-in-out;
 }
 
-#login.active {
-  margin-left: -378px;
+#login.disabled {
+  margin-left: -665px;
 }
 
-#register {
-  display: none;
+#message {
+  right: -360px;
+
+  transition: all .5s ease-in-out;
 }
