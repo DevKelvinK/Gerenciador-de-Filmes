@@ -1,6 +1,7 @@
 <?php 
 
 require "src/models/User.php";
+require "src/models/Movie.php";
 
 session_start();
 

@@ -1,6 +1,8 @@
 <?php
 
 $form = '';
+$formLogin = null;
+$formRegister = null;
 
 if (flash()->get('validations_login') ?? []) {
   $formLogin = 'login';
@@ -13,10 +15,10 @@ if (flash()->get('validations_login') ?? []) {
 ?>
 
 <!-- Login e Cadastro-->
-<section class="h-full flex">
+<section class="h-full flex p-4">
   <!-- Thumb -->
   <div class="flex flex-col justify-between w-2/4 p-8 rounded-[18px] bg-thumb bg-cover bg-no-repeat">
-    <img src="/public/assets/logo.svg" class="w-16" alt="Logo AB Filmes">
+    <img src="/public/assets/images/logo.svg" class="w-16" alt="Logo AB Filmes">
 
     <div class="flex flex-col gap-3 w-[346px]">
       <h2 class="text-gray-6 font-rammetto">ab filmes</h2>
@@ -59,9 +61,9 @@ if (flash()->get('validations_login') ?? []) {
 
           <form method="post" novalidate>
             <div class="flex flex-col gap-4">
-              <?php input('email', 'email', 'E-mail', 'ph ph-envelope', 'email', $formLogin ?? false); ?>
+              <?php input('email', 'email', 'E-mail', 'ph ph-envelope', $formLogin); ?>
 
-              <?php input('password', 'senha', 'Senha', 'ph ph-password', 'senha', $formLogin ?? false); ?>
+              <?php input('password', 'senha', 'Senha', 'ph ph-password', $formLogin); ?>
             </div>
 
             <button type="submit" class="submit w-full mt-8 px-5 py-3 rounded-md bg-purple-base text-white hover:bg-purple-light hover:shadow-buttonHover focus:bg-purple-light focus:shadow-buttonHover outline-none">Entrar</button>
@@ -74,11 +76,11 @@ if (flash()->get('validations_login') ?? []) {
 
           <form action="/register" method="post" novalidate>
             <div class="flex flex-col gap-4">
-              <?php input('text', 'nome', 'Nome', 'ph ph-envelope', 'nome', $formRegister ?? false); ?>
+              <?php input('text', 'nome', 'Nome', 'ph ph-user', $formRegister); ?>
 
-              <?php input('email', 'email', 'E-mail', 'ph ph-envelope', 'email', $formRegister ?? false); ?>
+              <?php input('email', 'email', 'E-mail', 'ph ph-envelope', $formRegister); ?>
 
-              <?php input('password', 'senha', 'Senha', 'ph ph-password', 'senha', $formRegister ?? false); ?>
+              <?php input('password', 'senha', 'Senha', 'ph ph-password', $formRegister); ?>
             </div>
 
             <button type="submit" class="submit w-full mt-8 px-5 py-3 rounded-md bg-purple-base text-white hover:bg-purple-light hover:shadow-buttonHover focus:bg-purple-light focus:shadow-buttonHover outline-none">Criar</button>

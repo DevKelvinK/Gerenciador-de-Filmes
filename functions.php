@@ -1,23 +1,23 @@
 <?php
 
-function view($view, $data = []) {
+function view($view, $data = [], $component = null) {
   foreach ($data as $key => $value) {
     $$key = $value;
   }
 
-  require "./src/views/templates/app.php";
+  require "./src/views/templates/index.template.php";
 }
 
-function input($type, $name, $placeholder, $classIcon, $field, $form) {  
-
+function input($type, $name, $placeholder, $classIcon, $form = '') { 
+  
   require "./src/views/partials/_input.php";
 }
 
-function abort($code)
+function abort($code, $message)
 {
   http_response_code($code);
   
-  view("404");
+  view("httpErrors", compact('code', 'message'));
   
   die();
 }
@@ -47,7 +47,6 @@ function config($key = null)
 }
 
 // Debugging
-
 function dump($dump) {
   echo '<pre class="text-red-500">';
   var_dump($dump);

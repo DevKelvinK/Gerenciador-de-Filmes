@@ -7,10 +7,16 @@ $validationsMessages = flash()->get("validations_$form") ?? null;
 $sessionLoginValidations = $_SESSION['flash_validations_login'] ?? null;
 
 // SESSION FormData para recuperar os valores do form
-$formData = flash()->get("validations_$form") ? (flash()->get("formData") ?? []) : [];
+$formData = flash()->get("formData") ?? [];
+if ($name != 'pesquisar' && !$validationsMessages) {
+  $formData = [];
+}
 
 // Ativar o botão de limpar o campo se campo estiver preenchido
 $hidden = ($formData[$name] ?? '') ? '' : 'hidden';
+
+// dump(isset($validationsMessages["$name"]));
+// dump(isset($sessionLoginValidations));
 
 ?>
 
@@ -20,8 +26,8 @@ $hidden = ($formData[$name] ?? '') ? '' : 'hidden';
       type="<?= $type ?>"
       name="<?= $name ?>"
       placeholder="<?= $placeholder ?>"
-      class="inpForm <?php if (!isset($validationsMessages["$field"]) && !isset($sessionLoginValidations)) echo 'valid'; ?>"
       value="<?= htmlspecialchars($formData[$name] ?? '') ?>"
+      class="inpForm <?php if ((!isset($validationsMessages["$name"]) && !isset($sessionLoginValidations)) || $name == 'pesquisar') echo 'valid'; ?>"
       required />
 
     <i class="
@@ -29,23 +35,24 @@ $hidden = ($formData[$name] ?? '') ? '' : 'hidden';
       echo $classIcon;
 
       if (isset($sessionLoginValidations)) {
-        echo $validationsMessages ? ' text-error-base' : '';
-      } elseif (isset($validationsMessages["$field"])) {
+        echo $validationsMessages ? ' text-error-base' : ' text-gray-5';;
+      } elseif (isset($validationsMessages["$name"])) {
         echo ' text-error-base';
+      } else {
+        echo ' text-gray-5';
       }
       ?>
 
-      icon text-xl absolute left-4 pointer-events-none"
-    ></i>
+      icon text-xl absolute left-4 pointer-events-none"></i>
 
     <button type="button" class=" <?= $hidden ?> cleanBtn flex absolute right-4 text-gray-4 hover:text-purple-base outline-none focus:text-purple-base cursor-pointer" />
     <i class="ph-fill ph-x-circle text-xl"></i>
     </button>
   </div>
 
-  <?php if (isset($validationsMessages["$field"])): ?>
+  <?php if (isset($validationsMessages["$name"])): ?>
     <ul class="mt-2 ml-1 flex flex-wrap gap-x-3">
-      <?php foreach ($validationsMessages["$field"] as $messages): ?>
+      <?php foreach ($validationsMessages["$name"] as $messages): ?>
         <li class="flex gap-1.5 items-center text-start text-error-light">
           <i class="ph ph-warning text-base"></i>
           <span class="text-xs mt-[2px]"><?= $messages ?></span>

@@ -1,40 +1,44 @@
-/* Checked e Focus dos botões da tela de Login e Cadastro */
-.checkbox:focus ~ label{
-  outline: 2px solid #892CCD;
+* {
+  box-sizing: border-box;
 }
 
-.checkbox:checked ~ label{
-  color: #A85FDD;
-  background-color: #1A1B2D;
+/* Checked e Focus dos botões da tela de Login e Cadastro */
+.checkbox:focus ~ label {
+  outline: 2px solid #892ccd;
+}
+
+.checkbox:checked ~ label {
+  color: #a85fdd;
+  background-color: #1a1b2d;
 }
 
 /* Inputs forms Login e Cadastro */
 .inpForm {
   flex: 1;
   padding: 0.75rem 1rem 0.75rem 2.75rem;
-  border: 1px solid #1A1B2D;
+  border: 1px solid #1a1b2d;
   border-radius: 6px;
 
-  color: #E4E5EC;
+  color: #e4e5ec;
   background: transparent;
 }
 
 .inpForm:hover,
 .inpForm:focus {
-  outline: 2px solid #892CCD;
+  outline: 2px solid #892ccd;
 }
 
 .inpForm::placeholder {
-  color: #7A7B9F;
+  color: #7a7b9f;
 }
 
 .inpForm.valid:valid ~ i.ph {
-  color: #892CCD;
+  color: #892ccd;
 }
 
 /* Animação para alterar os containers Login e Cadastro */
 #login {
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 #login.disabled {
@@ -42,7 +46,40 @@
 }
 
 #message {
-  right: -360px;
+  transition: all 0.5s ease-in-out;
+}
 
-  transition: all .5s ease-in-out;
+/* componentes ativos */
+.active {
+  color: #a85fdd;
+  background-color: #1a1b2d;
+}
+
+/* Sombreados dos Cards e Thumbs */
+.shadingCard {
+  background: linear-gradient(
+    180deg,
+    rgba(9, 9, 16, 0) 0%,
+    rgba(9, 9, 16, 0.9) 73%
+  );
+}
+
+.movieCard:hover .shadingCard,
+.movieCard:focus .shadingCard {
+  background: linear-gradient(
+    180deg,
+    rgba(9, 9, 16, 0.5) 0%,
+    rgba(9, 9, 16, 0.9) 50%,
+    rgba(9, 9, 16, 1) 100%
+  );
+}
+
+.shadingThumb::after {
+  position: absolute;
+  content: "";
+
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(180deg, rgb(18, 18, 33, 0) 0%, #131320 100%);
 }

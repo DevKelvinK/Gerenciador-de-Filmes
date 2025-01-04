@@ -36,18 +36,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $_SESSION['auth'] = $user;
-    flash()->put('message', 'Seja bem-vindo, ' . "<span class='text-teal-500 capitalize'>$user->name</span>" . '!');
+    flash()->put('message', 'Seja bem-vindo, ' . "<span class='text-purple-light capitalize'>$user->name</span>");
+    unset($_SESSION['flash_formData']);
     header('location: /explore');
     exit();
 
   } else {
-
     $validation->addValidationMessage('senha', 'Email ou senha incorretos!');
     if ($validation->notPassed('login')) {
       header('location: /login');
       exit();
     }
   }
+}
+
+if (auth()) {
+  header('location: /explore');
+  exit();
 }
 
 view("login");
