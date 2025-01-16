@@ -2,6 +2,7 @@
 
 require "src/models/User.php";
 require "src/models/Movie.php";
+require "src/models/Rating.php";
 
 session_start();
 

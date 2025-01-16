@@ -1,13 +1,3 @@
-/* Colocar reticências no texto da descrição */
-function ellipsisDescription() {
-  const descriptions = document.querySelectorAll(".description");
-
-  descriptions.forEach((text) => {
-    text.innerHTML = text.innerHTML.substring(0, 72) + "...";
-  });
-}
-document.addEventListener("DOMContentLoaded", ellipsisDescription);
-
 /* Submit quando avatar de perfil for selecionado*/
 function submitFormOnFileSelect() {
   var fileInput = document.getElementById("avatarProfile");
@@ -22,14 +12,28 @@ function Modal() {
   const modal = document.querySelector("dialog");
   const showBtns = document.querySelectorAll(".showModal");
   const closeBtn = document.querySelector(".closeModal");
+  const isOpen = modal.classList.contains("open");
 
   const overlay = document.querySelector(".overlay");
   const divBlur = document.querySelectorAll(".modalBlur");
   const divOverFlow = document.querySelector(".modalOverFlow");
 
+  if (isOpen) {
+    modal.show();
+
+    divBlur.forEach((div) => {
+      div.classList.add("blur-sm");
+    });
+
+    divOverFlow.classList.toggle("overflow-hidden");
+    overlay.classList.toggle("hidden");
+  }
+
   const focusableElements = "button, [href], textarea";
   let firstFocusableElement;
   let lastFocusableElement;
+
+  
 
   showBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -86,3 +90,19 @@ function Modal() {
   }
 }
 document.addEventListener("DOMContentLoaded", Modal);
+
+/* Selecionar avaliação */
+function starRating() {
+  const stars = document.querySelectorAll(".star-icon");
+
+  stars.forEach((star) => {
+    star.addEventListener("click", () => {
+      stars.forEach((s) => {
+        s.classList.remove("starActive", "firstStar");
+      });
+
+      star.classList.add("starActive");
+    });
+  });
+}
+document.addEventListener("DOMContentLoaded", starRating);

@@ -2,7 +2,6 @@
 
 class Validation
 {
-
   public $validations = [];
 
   public static function validate($rules, $data)
@@ -57,7 +56,21 @@ class Validation
   private function required($field, $value)
   {
     if (strlen(trim($value)) == 0) {
-      $error = $field == 'senha' ? "A $field é obrigatória." : "O $field é obrigatório.";
+      switch ($field) {
+      case 'senha':
+        $error = "A $field é obrigatória.";
+        break;
+      case 'avaliacao':
+        $error = "A avaliação é obrigatória.";
+        break;
+      case 'comentario':
+        $error = "O comentário é obrigatório.";
+        break;
+      default:
+        $error = "O $field é obrigatório.";
+        break;
+      }
+
       $this->addValidationMessage($field, $error);
     }
   }

@@ -18,16 +18,13 @@ if (flash()->get('validations_login') ?? []) {
 <section class="h-full flex p-4">
   <!-- Thumb -->
   <div class="flex flex-col justify-between w-2/4 p-8 rounded-[18px] bg-thumb bg-cover bg-no-repeat">
-    <img src="/public/assets/images/logo.svg" class="w-16" alt="Logo AB Filmes">
+    <img src="/public/assets/icons/logo.svg" class="w-16" alt="Logo AB Filmes">
 
     <div class="flex flex-col gap-3 w-[346px]">
       <h2 class="text-gray-6 font-rammetto">ab filmes</h2>
       <h3 class="text-gray-7 font-rammetto text-xl">O guia definitivo para os amantes do cinema</h3>
     </div>
   </div>
-
-  <!-- Temporário -->
-  <!-- <a href="/logout" class="mt-6 block text-white absolute right-10 px-6 py-2 border border-purple-base rounded-lg hover:bg-purple-base">Reset Session</a> -->
 
   <!-- Forms -->
   <div class="w-2/4 text-gray-5 pt-[135px]">

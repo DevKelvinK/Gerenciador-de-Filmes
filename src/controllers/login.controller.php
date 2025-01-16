@@ -1,5 +1,10 @@
 <?php
 
+if (auth()) {
+  header('location: /explore');
+  exit();
+}
+
 $message = $_REQUEST['message'] ?? '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -11,10 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     'senha' => ['required']
   ], $_POST);
 
-  // Armazenar valores do form na SESSION.
-  flash()->put('formData', $_POST);
-
   if ($validation->notPassed('login')) {
+    // Armazenar valores do form na SESSION.
+    flash()->put('formData', $_POST);
+
     header('location: /login');
     exit();
   }
@@ -36,11 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $_SESSION['auth'] = $user;
-    flash()->put('message', 'Seja bem-vindo, ' . "<span class='text-purple-light capitalize'>$user->name</span>");
-    unset($_SESSION['flash_formData']);
+    flash()->put('message', 'Seja bem-vindo(a), ' . "<span class='text-purple-light capitalize'>$user->name</span>");
     header('location: /explore');
     exit();
-
   } else {
     $validation->addValidationMessage('senha', 'Email ou senha incorretos!');
     if ($validation->notPassed('login')) {
@@ -48,11 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       exit();
     }
   }
-}
-
-if (auth()) {
-  header('location: /explore');
-  exit();
 }
 
 view("login");

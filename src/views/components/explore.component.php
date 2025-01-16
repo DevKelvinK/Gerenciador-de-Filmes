@@ -11,17 +11,25 @@
       require "./src/views/partials/_cardMovie.php";
     }
     ?>
-  </section>
 
-  <?php if(!$movies): ?>
+    <!-- Colocar reticências no texto da descrição -->
+    <script>
+      const descriptions = document.querySelectorAll(".description");
+
+      descriptions.forEach((text) => {
+        text.innerHTML = text.innerHTML.substring(0, 72) + "...";
+      });
+    </script>
+  </section>
+  <?php if (!$movies): ?>
     <div class="flex flex-col gap-5 items-center text-center font-nunito">
       <i class="ph ph-film-slate text-gray-4 text-[44px]"></i>
-  
+
       <p class="w-80 text-gray-6 leading-[160%]">
         Nenhum filme encontrado com “<?= $search ?>” </br>
         Que tal tentar outra busca?
       </p>
-  
+
       <a href="/explore" class="flex items-center gap-2 text-gray-5 hover:text-purple-light transition-all ease-in-out duration-300">
         <i class="ph ph-x text-xl"></i> Limpar filtro
       </a>

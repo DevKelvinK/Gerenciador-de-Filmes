@@ -1,0 +1,11 @@
+@import url("loginView.css");
+@import url("appView.css");
+
+* {
+  box-sizing: border-box;
+}
+
+.componentActive {
+  color: #a85fdd;
+  background-color: #1a1b2d;
+}

@@ -14,10 +14,6 @@ if ($name != 'pesquisar' && !$validationsMessages) {
 
 // Ativar o botão de limpar o campo se campo estiver preenchido
 $hidden = ($formData[$name] ?? '') ? '' : 'hidden';
-
-// dump(isset($validationsMessages["$name"]));
-// dump(isset($sessionLoginValidations));
-
 ?>
 
 <div>
