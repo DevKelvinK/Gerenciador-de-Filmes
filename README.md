@@ -2,22 +2,23 @@
 
 ## Descrição
 
-Este projeto é um gerenciador de filmes desenvolvido em PHP. Ele permite que os usuários adicionem, editem, visualizem e excluam filmes de uma lista.
+Este projeto é um gerenciador de filmes desenvolvido em PHP. Ele permite que os usuários adicionem, visualizem e avaliem filmes de uma lista.
 
 ## Funcionalidades Implementadas
 
-- **Adicionar Filme**: Permite adicionar um novo filme à lista com título, descrição e ano de lançamento.
-- **Editar Filme**: Permite editar as informações de um filme existente.
+- **Adicionar Filme**: Permite adicionar um novo filme à lista com título, descrição, categoria e ano de lançamento.
 - **Visualizar Filmes**: Exibe a lista de filmes adicionados.
-- **Excluir Filme**: Permite remover um filme da lista.
+- **Avaliar Filme**: Permite avaliar um filme da lista com uma nota de 1 a 5 estrelas.
 
 ## Estrutura do Projeto
 
-- `index.php`: Página principal do gerenciador de filmes.
-- `add.php`: Página para adicionar novos filmes.
-- `edit.php`: Página para editar filmes existentes.
-- `delete.php`: Página para excluir filmes.
-- `movies.php`: Arquivo que contém a lógica para manipulação dos filmes.
+- `index.template.php`: Página principal do gerenciador de filmes.
+- `login.view.php`: Página principal de login.
+- `explore.component.php`: Página para visualizar filmes existentes.
+- `movie-create.view.php`: Página para adicionar novos filmes.
+- `myMovies.component.php`: Página para ver os meus filmes adicionados.
+- `movie.controller.php`: Arquivo que contém a lógica para manipulação dos filmes.
+- `login.controller.php`: Arquivo que contém a lógica para o login na página.
 
 ## Como Executar
 
@@ -35,18 +36,15 @@ php -S localhost:8000
 ## Tecnologias Utilizadas
 
 - PHP
+- JavaScript
 - HTML
-- CSS
+- Tailwind CSS
 
 ## Próximos Passos
 
-- Implementar autenticação de usuários.
-- Adicionar funcionalidade de busca de filmes.
-- Melhorar a interface do usuário.
-
-## Contribuições
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
+- Implementar front-end da página de adicionar um filme.
+- Adicionar back-end para páginas "Meus Filmes" e "Adicionar Filmes".
+- Refatorar e melhorar toda estrutura do código.
 
 ## Licença
 
