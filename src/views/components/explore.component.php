@@ -1,4 +1,4 @@
-<div class="px-4 lg:px-[5.5rem] pt-16 pb-5">
+<div class="px-[5.5rem] pt-16 pb-5"> 
   <form class="w-full flex justify-between items_center mb-8" method="post" novalidate>
     <h1 class="font-rammetto text-2xl text-[#E5E2E9]">Explorar</h1>
 
@@ -21,6 +21,7 @@
       });
     </script>
   </section>
+  
   <?php if (!$movies): ?>
     <div class="flex flex-col gap-5 items-center text-center font-nunito">
       <i class="ph ph-film-slate text-gray-4 text-[44px]"></i>
@@ -30,7 +31,7 @@
         Que tal tentar outra busca?
       </p>
 
-      <a href="/explore" class="flex items-center gap-2 text-gray-5 hover:text-purple-light transition-all ease-in-out duration-300">
+      <a href="/explore" class="flex items-center gap-2 text-gray-5 outline-none hover:text-purple-light focus:text-purple-light transition-all ease-in-out duration-300">
         <i class="ph ph-x text-xl"></i> Limpar filtro
       </a>
     </div>

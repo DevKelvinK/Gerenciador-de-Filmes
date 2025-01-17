@@ -1,6 +1,3 @@
-<!-- O UNICO RUIM É QUE AQUI NO EXPLORE PELO FIGMA, NÃO ESTÁ ARREDONDANDO, E NA NOSSA QUERY ESTAMOS ARREDONDANDO. VOU TENTAR RESOLVER ISSO! -->
-
-
 <a href="/movie?id=<?= $movie->id ?>" class="movieCard group relative w-[280px] h-[360px] rounded-xl outline-none focus:outline-purple-base transition-all ease-in-out duration-300">
   <!-- Borda -->
   <div class="absolute z-[2] w-full h-full border-2 border-gray-2 rounded-lg overflow-hidden"></div>
