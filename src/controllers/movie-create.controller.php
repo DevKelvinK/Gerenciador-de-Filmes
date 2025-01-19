@@ -1,4 +1,3 @@
 <?php
 
-header('location: /myMovies');
-exit();
+view("app", [] , "movie-create");

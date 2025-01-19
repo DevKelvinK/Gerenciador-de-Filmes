@@ -14,6 +14,7 @@ if ($name != 'pesquisar' && !$validationsMessages) {
 
 // Ativar o botão de limpar o campo se campo estiver preenchido
 $hidden = ($formData[$name] ?? '') ? '' : 'hidden';
+
 ?>
 
 <div>
@@ -23,8 +24,13 @@ $hidden = ($formData[$name] ?? '') ? '' : 'hidden';
       name="<?= $name ?>"
       placeholder="<?= $placeholder ?>"
       value="<?= htmlspecialchars($formData[$name] ?? '') ?>"
-      class="inpForm <?php if ((!isset($validationsMessages["$name"]) && !isset($sessionLoginValidations)) || $name == 'pesquisar') echo 'valid'; ?>"
-      required />
+      class="
+        inpForm 
+        <?php if ((!isset($validationsMessages["$name"]) && !isset($sessionLoginValidations)) || $name == 'pesquisar') echo 'valid'; ?>
+        <?php if ($type == 'number') echo 'no-spinner'; ?>
+      "
+      required 
+    />
 
     <i class="
       <?php
@@ -39,10 +45,11 @@ $hidden = ($formData[$name] ?? '') ? '' : 'hidden';
       }
       ?>
 
-      icon text-xl absolute left-4 pointer-events-none"></i>
+      icon text-xl absolute left-4 pointer-events-none">
+    </i>
 
     <button type="button" class=" <?= $hidden ?> cleanBtn flex absolute right-4 text-gray-4 hover:text-purple-base outline-none focus:text-purple-base cursor-pointer" />
-    <i class="ph-fill ph-x-circle text-xl"></i>
+      <i class="ph-fill ph-x-circle text-xl"></i>
     </button>
   </div>
 

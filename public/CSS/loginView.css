@@ -8,30 +8,6 @@
   background-color: #1a1b2d;
 }
 
-/* Inputs forms Login e Cadastro */
-.inpForm {
-  flex: 1;
-  padding: 0.75rem 1rem 0.75rem 2.75rem;
-  border: 1px solid #1a1b2d;
-  border-radius: 6px;
-
-  color: #e4e5ec;
-  background: transparent;
-}
-
-.inpForm:hover,
-.inpForm:focus {
-  outline: 2px solid #892ccd;
-}
-
-.inpForm::placeholder {
-  color: #7a7b9f;
-}
-
-.inpForm.valid:valid ~ i.ph {
-  color: #892ccd;
-}
-
 /* Animação para alterar os containers Login e Cadastro */
 #login {
   transition: all 0.2s ease-in-out;
