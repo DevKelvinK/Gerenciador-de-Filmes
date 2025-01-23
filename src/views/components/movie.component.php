@@ -1,4 +1,5 @@
 <?php
+
 // Mensagens de validações de cada formulário
 $validationsMessages = flash()->get("validations") ?? null;
 
@@ -18,9 +19,9 @@ $formData = flash()->get("formData")['comentario'] ?? '';
       </div>
 
       <div class="w-[644px]">
-        <a href="/explore" class="flex items-center gap-2 text-gray-5 font-nunito outline-none hover:text-purple-light focus:text-purple-light transition-all ease-in-out duration-300">
+        <button type="button" class="flex items-center gap-2 text-gray-5 font-nunito outline-none hover:text-purple-light focus:text-purple-light transition-all ease-in-out duration-300" onclick="window.history.back()">
           <i class="ph ph-arrow-left text-xl"></i> Voltar
-        </a>
+        </button>
 
         <h1 class="mt-5 text-[2rem] text-gray-7 font-bold font-rajdhani"><?= $movie->title ?></h1>
 

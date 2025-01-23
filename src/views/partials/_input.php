@@ -1,7 +1,7 @@
 <?php
 
 // Mensagens de validações de cada formulário
-$validationsMessages = flash()->get("validations_$form") ?? null;
+$validationsMessages = ($form) ? flash()->get("validations_$form") : flash()->get("validations") ?? null;
 
 // SESSION validations_Login
 $sessionLoginValidations = $_SESSION['flash_validations_login'] ?? null;
@@ -14,7 +14,6 @@ if ($name != 'pesquisar' && !$validationsMessages) {
 
 // Ativar o botão de limpar o campo se campo estiver preenchido
 $hidden = ($formData[$name] ?? '') ? '' : 'hidden';
-
 ?>
 
 <div>
@@ -29,9 +28,7 @@ $hidden = ($formData[$name] ?? '') ? '' : 'hidden';
         <?php if ((!isset($validationsMessages["$name"]) && !isset($sessionLoginValidations)) || $name == 'pesquisar') echo 'valid'; ?>
         <?php if ($type == 'number') echo 'no-spinner'; ?>
       "
-      required 
-    />
-
+      required />
     <i class="
       <?php
       echo $classIcon;
@@ -49,9 +46,9 @@ $hidden = ($formData[$name] ?? '') ? '' : 'hidden';
     </i>
 
     <button type="button" class=" <?= $hidden ?> cleanBtn flex absolute right-4 text-gray-4 hover:text-purple-base outline-none focus:text-purple-base cursor-pointer" />
-      <i class="ph-fill ph-x-circle text-xl"></i>
+    <i class="ph-fill ph-x-circle text-xl"></i>
     </button>
-  </div>
+  </div> 
 
   <?php if (isset($validationsMessages["$name"])): ?>
     <ul class="mt-2 ml-1 flex flex-wrap gap-x-3">

@@ -3,7 +3,7 @@
   <div class="absolute z-[2] w-full h-full border-2 border-gray-2 rounded-lg overflow-hidden"></div>
 
   <!-- Conteúdo -->
-  <article class="shadingCard absolute z-[1] h-full flex flex-col justify-between rounded-xl">
+  <article class="shadingCard absolute z-[1] w-full h-full flex flex-col justify-between rounded-xl">
     <div class="flex items-center gap-1.5 self-end m-2 px-2.5 py-1.5 text-xl text-gray-7 font-bold font-rajdhani bg-[#0f0f1acc] rounded-full">
       <p><?= number_format($movie->rating_average, 1, ',', '.')?> <span class="text-xs font-medium">/ 5</span></p>
       <i class="ph-fill ph-star text-base"></i>

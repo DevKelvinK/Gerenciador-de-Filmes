@@ -15,23 +15,23 @@
   </form>
 
   <section class="grid grid-cols-4 gap-6">
-    <!-- <?php
+    <?php
       foreach ($movies as $movie) {
         require "./src/views/partials/_cardMovie.php";
       }
-    ?> -->
+    ?>
 
     <!-- Colocar reticências no texto da descrição -->
-    <!-- <script>
+    <script>
       const descriptions = document.querySelectorAll(".description");
 
       descriptions.forEach((text) => {
         text.innerHTML = text.innerHTML.substring(0, 72) + "...";
       });
-    </script> -->
+    </script>
   </section>
 
-  <!-- <?php if (!$movies): ?>
+  <?php if (!$movies): ?>
     <div class="flex flex-col gap-5 items-center text-center font-nunito">
       <i class="ph ph-film-slate text-gray-4 text-[44px]"></i>
 
@@ -44,5 +44,5 @@
         <i class="ph ph-plus text-xl"></i> Cadastrar novo
       </a>
     </div>
-  <?php endif; ?> -->
+  <?php endif; ?>
 </div>

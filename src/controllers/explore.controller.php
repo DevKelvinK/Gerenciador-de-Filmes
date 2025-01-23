@@ -1,5 +1,7 @@
 <?php
 
+unset($_SESSION["flash_validations_login"]);
+
 if (!auth()) {
   abort(403, 'Você precisa estar logado para acessar essa página.');
 }

@@ -57,18 +57,29 @@ class Validation
   {
     if (strlen(trim($value)) == 0) {
       switch ($field) {
-      case 'senha':
-        $error = "A $field é obrigatória.";
-        break;
-      case 'avaliacao':
-        $error = "A avaliação é obrigatória.";
-        break;
-      case 'comentario':
-        $error = "O comentário é obrigatório.";
-        break;
-      default:
-        $error = "O $field é obrigatório.";
-        break;
+        case 'senha':
+        case 'categoria':
+        case 'capa':
+          $error = "A $field é obrigatória.";
+          break;
+        case 'avaliacao':
+          $error = "A avaliação é obrigatória.";
+          break;
+        case 'descricao':
+          $error = "A descrição é obrigatória.";
+          break;
+        case 'comentario':
+          $error = "O comentário é obrigatório.";
+          break;
+        case 'titulo':
+          $error = "O título é obrigatório.";
+          break;
+        case 'ano_de_lancamento':
+          $error = "O ano é obrigatório.";
+          break;
+        default:
+          $error = "O $field é obrigatório.";
+          break;
       }
 
       $this->addValidationMessage($field, $error);
@@ -84,15 +95,31 @@ class Validation
 
   private function min($field, $value, $min)
   {
-    if (strlen($value) < $min) {
-      $this->addValidationMessage($field, "A $field deve ter no mínimo $min caracteres.");
+    if ($field == 'ano_de_lancamento' && $value != '') {
+      if ($value < $min) {
+        $this->addValidationMessage($field, "O ano deve ser após $min.");
+      }
+    }
+
+    if (strlen($value) < $min && $field != 'ano_de_lancamento') {
+      if ($field == 'titulo') {
+        $this->addValidationMessage($field, "O título deve ter no mínimo $min caracteres.");
+      } else if ($field == 'descricao') {
+        $this->addValidationMessage($field, "A descrição deve ter no mínimo $min caracteres.");
+      } else {
+        $this->addValidationMessage($field, "A $field deve ter no mínimo $min caracteres.");
+      }
     }
   }
 
   private function max($field, $value, $max)
   {
-    if (strlen($value) > $max) {
-      $this->addValidationMessage($field, "A $field deve ter no máximo $max caracteres.");
+    if ($field == 'ano_de_lancamento' && $value > $max) {
+      $this->addValidationMessage($field, "Livros do futuro são inválidos.");
+    } else {
+      if (strlen($value) > $max) {
+        $this->addValidationMessage($field, "A $field deve ter no máximo $max caracteres.");
+      }
     }
   }
 
