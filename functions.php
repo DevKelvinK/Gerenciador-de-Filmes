@@ -5,12 +5,12 @@ function view($view, $data = [], $component = null) {
     $$key = $value;
   }
 
-  require "./src/views/templates/index.template.php";
+  require "../src/views/templates/index.template.php";
 }
 
 function input($type, $name, $placeholder, $classIcon, $form = '') { 
   
-  require "./src/views/partials/_input.php";
+  require "../src/views/partials/_input.php";
 }
 
 function abort($code, $message)

@@ -13,7 +13,7 @@ return [
     // SQLite 
     /*
     'driver' => 'sqlite',
-    'database' => 'database.sqlite',
+    'database' => '../database.sqlite',
     */
   ],
 ];

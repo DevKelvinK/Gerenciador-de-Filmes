@@ -1,6 +1,6 @@
 <header class="modalBlur border-b border-gray-2 bg-gray-1 overflow-hidden">
   <div class="max-w-[1366px] h-20 flex justify-between items-center px-6 mx-auto font-nunito">
-    <img src="/public/assets/icons/logo.svg" class="w-12" alt="Logo AB Filmes">
+    <img src="assets/icons/logo.svg" class="w-12" alt="Logo AB Filmes">
 
     <nav>
       <ul class="flex items-center gap-6 text-gray-5">
@@ -30,7 +30,7 @@
             </div>
 
             <img 
-              src="../../public/assets/images/avatares/<?= auth()->avatar ?? 'avatarDefault.png' ?>"
+              src="/assets/images/avatares/<?= auth()->avatar ?? 'avatarDefault.png' ?>"
               alt="Avatar perfil" 
               class="w-full h-full object-cover"
             >
@@ -49,6 +49,6 @@
 
 <main>
   <div class="max-w-[1366px] mx-auto">
-    <?php require "./src/views/components/{$component}.component.php"; ?>
+    <?php require "../src/views/components/{$component}.component.php"; ?>
   </div>
 </main>

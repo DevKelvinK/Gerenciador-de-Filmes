@@ -48,5 +48,3 @@ class Movie
     return (new self)->query('m.user_id = :user_id', compact('user_id'))->fetchAll();
   }
 }
-
-// aqui preciso criar outra function para o "meus filmes".

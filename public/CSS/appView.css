@@ -45,21 +45,21 @@
 }
 
 .star-icon::before {
-  content: url("/public/assets/icons/Star-Fill.svg");
+  content: url("/assets/icons/Star-Fill.svg");
 }
 
 .star-icon.firstStar::before {
-  content: url("/public/assets/icons/Star-Regular.svg");
+  content: url("/assets/icons/Star-Regular.svg");
 }
 
 .star-icon.starActive ~ .star-icon::before {
-  content: url("/public/assets/icons/Star-Regular.svg");
+  content: url("/assets/icons/Star-Regular.svg");
 }
 
 .boxRating:hover .star-icon::before {
-  content: url("/public/assets/icons/Star-Fill.svg");
+  content: url("/assets/icons/Star-Fill.svg");
 }
 
 .star-icon:hover ~ .star-icon::before {
-  content: url("/public/assets/icons/Star-Regular.svg");
+  content: url("/assets/icons/Star-Regular.svg");
 }

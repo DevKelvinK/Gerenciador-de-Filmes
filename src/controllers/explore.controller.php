@@ -9,6 +9,13 @@ if (!auth()) {
 $message = $_REQUEST['message'] ?? '';
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST' && !isset($_POST["pesquisar"])) {
+
+  // DELETAR ARQUIVO AVATAR ANTERIOR, CASO EXISTA.
+  if (auth()->avatar) {
+    unlink(__DIR__ . '/../../public/assets/images/avatares/' . auth()->avatar);
+  }
+
+  // UPLOAD DO NOVO AVATAR
   $fileAvatar = $_FILES['avatar'];
   $user_id = auth()->id;
 
@@ -18,7 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && !isset($_POST["pesquisar"])) {
   move_uploaded_file($fileAvatar['tmp_name'], __DIR__ . '/../../public/assets/' . "images/avatares/$newName");
 
   $database->query(
-    query: "update users set avatar = :avatar where id = :user_id;",
+    query: "
+      SET FOREIGN_KEY_CHECKS= 0;
+      UPDATE ratings SET user_avatar = :avatar WHERE user_id = :user_id;
+      UPDATE users SET avatar = :avatar WHERE id = :user_id;
+      SET FOREIGN_KEY_CHECKS= 1;
+    ",
     params: [
       'avatar' => $newName,
       'user_id' => $user_id
@@ -35,7 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && !isset($_POST["pesquisar"])) {
 
   flash()->put('message', 'Avatar atualizado com sucesso!');
 
-  unset($_FILES);
+  header('Location: explore');
+  exit();
 }
 
 // Armazenar valores do form na SESSION.

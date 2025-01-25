@@ -1,5 +1,4 @@
 <?php
-
 $form = '';
 $formLogin = null;
 $formRegister = null;
@@ -11,14 +10,13 @@ if (flash()->get('validations_login') ?? []) {
   $formRegister = 'register';
   $form = "_$formRegister";
 }
-
 ?>
 
 <!-- Login e Cadastro-->
 <section class="h-full flex p-4">
   <!-- Thumb -->
   <div class="flex flex-col justify-between w-2/4 p-8 rounded-[18px] bg-thumb bg-cover bg-no-repeat">
-    <img src="/public/assets/icons/logo.svg" class="w-16" alt="Logo AB Filmes">
+    <img src="assets/icons/logo.svg" class="w-16" alt="Logo AB Filmes">
 
     <div class="flex flex-col gap-3 w-[346px]">
       <h2 class="text-gray-6 font-rammetto">ab filmes</h2>
@@ -89,9 +87,7 @@ if (flash()->get('validations_login') ?? []) {
 </section>
 
 <?php
-
 // Limpar os dados das sessões após utiliza-los
 unset($_SESSION["flash_validations$form"]);
 unset($_SESSION["flash_formData"]);
-
 ?>

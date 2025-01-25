@@ -8,7 +8,7 @@ Este projeto é um gerenciador de filmes desenvolvido em PHP. Ele permite que os
 
 - **Adicionar Filme**: Permite adicionar um novo filme à lista com título, descrição, categoria e ano de lançamento.
 - **Visualizar Filmes**: Exibe a lista de filmes adicionados.
-- **Avaliar Filme**: Permite avaliar um filme da lista com uma nota de 1 a 5 estrelas.
+- **Avaliar Filme**: Permite avaliar um filme da lista com uma nota de 1 a 5 estrelas e um comentário.
 
 ## Estrutura do Projeto
 
@@ -28,7 +28,7 @@ Este projeto é um gerenciador de filmes desenvolvido em PHP. Ele permite que os
 4. Inicie o servidor PHP com o comando:
 
 ```bash
-php -S localhost:8000
+php -S localhost:8000 -t public/
 ```
 
 5. Acesse o gerenciador de filmes através do navegador em `http://localhost:8000`.
@@ -39,12 +39,6 @@ php -S localhost:8000
 - JavaScript
 - HTML
 - Tailwind CSS
-
-## Próximos Passos
-
-- Implementar front-end da página de adicionar um filme.
-- Adicionar back-end para páginas "Meus Filmes" e "Adicionar Filmes".
-- Refatorar e melhorar toda estrutura do código.
 
 ## Licença
 

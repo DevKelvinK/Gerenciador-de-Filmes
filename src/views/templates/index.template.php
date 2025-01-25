@@ -11,21 +11,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Rajdhani:wght@300;400;500;600;700&family=Rammetto+One&display=swap" rel="stylesheet">
 
   <!-- Style CSS -->
-  <link rel="stylesheet" href="/public/CSS/global.css">
+  <link rel="stylesheet" href="/CSS/global.css">
 
   <!-- TailwindCSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="/public/JS/tailwindCustom.js"></script>
+  <script src="/JS/tailwindCustom.js"></script>
 
   <!-- Phosphor Icons -->
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <link rel="shortcut icon" type="image/svg" sizes="32x32" href="/public/assets/icons/logo.svg">
 
   <title>Gerenciador de Filmes | Desafio PHP Rocketseat</title>
 </head>
 
 <body class="bg-gray-1">
   <div class="relative h-screen modalOverFlow">
-    <?php require "./src/views/{$view}.view.php"; ?>
+    <?php require "../src/views/{$view}.view.php"; ?>
   </div>
 
   <?php if ($message = flash()->get('message')): ?>
@@ -51,7 +53,6 @@
         }, 200);
 
         // Barra de tempo do balão de mensagem
-
         let containerWidth = msg.offsetWidth - 8;
         let count = 4;
         let x = (containerWidth / 100) * count;
@@ -80,8 +81,7 @@
     <?php unset($_SESSION["flash_message"]); ?>
   <?php endif; ?>
 
-  <script src="/public/JS/globalScripts.js" defer></script>
-  <script src="/public/JS/<?= $view ?>ViewScripts.js" defer></script>
+  <script src="/JS/globalScripts.js" defer></script>
+  <script src="/JS/<?= $view ?>ViewScripts.js" defer></script>
 </body>
-
 </html>

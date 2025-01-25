@@ -1,3 +1,5 @@
+<?php $formData = $_SESSION["flash_formData"]["pesquisar"] ?? null; ?>
+
 <div class="px-[5.5rem] pt-16 pb-5">
   <form class="w-full flex justify-between items_center mb-8" method="post" novalidate>
     <h1 class="font-rammetto text-2xl text-[#E5E2E9]">Meus filmes</h1>
@@ -17,7 +19,7 @@
   <section class="grid grid-cols-4 gap-6">
     <?php
       foreach ($movies as $movie) {
-        require "./src/views/partials/_cardMovie.php";
+        require "../src/views/partials/_cardMovie.php";
       }
     ?>
 
@@ -31,7 +33,20 @@
     </script>
   </section>
 
-  <?php if (!$movies): ?>
+  <?php if (!$movies && $formData): ?>
+    <div class="flex flex-col gap-5 items-center text-center font-nunito">
+      <i class="ph ph-film-slate text-gray-4 text-[44px]"></i>
+
+      <p class="w-80 text-gray-6 leading-[160%]">
+        Nenhum filme encontrado com “<?= $search ?>” </br>
+        Que tal tentar outra busca?
+      </p>
+
+      <a href="/myMovies" class="flex items-center gap-2 text-gray-5 outline-none hover:text-purple-light focus:text-purple-light transition-all ease-in-out duration-300">
+        <i class="ph ph-x text-xl"></i> Limpar filtro
+      </a>
+    </div>
+  <?php elseif (!$movies): ?>
     <div class="flex flex-col gap-5 items-center text-center font-nunito">
       <i class="ph ph-film-slate text-gray-4 text-[44px]"></i>
 
@@ -44,5 +59,5 @@
         <i class="ph ph-plus text-xl"></i> Cadastrar novo
       </a>
     </div>
-  <?php endif; ?>
+  <?php endif; ?>  
 </div>

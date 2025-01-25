@@ -11,21 +11,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $year_of_release = $_POST['ano_de_lancamento'];
   $description = $_POST['descricao'];
   $fileCover = $_FILES['capa'];
-
+  $_POST["capa"] = $fileCover['name'];
+  
   $randomName = md5(rand());
   $extension = pathinfo($fileCover['name'], PATHINFO_EXTENSION);
   $cover =  "$randomName.$extension";
-  move_uploaded_file($fileCover['tmp_name'], __DIR__ . '/../../public/assets/' . "images/covers/$cover");
-
-  $validation = Validation::validate([
-    'capa' => ['required',]
-  ], ['capa' => $cover]);
+  move_uploaded_file($fileCover['tmp_name'], __DIR__ . '/../../public/assets/images/covers/' . $cover);
 
   $validation = Validation::validate([
     'titulo' => ['required', 'min:3'],
     'categoria' => ['required'],
     'ano_de_lancamento' => ['required', 'min:1800', 'max:2025'],
     'descricao' => ['required', 'min:10'],
+    'capa' => ['required'],
   ], $_POST);
 
   if ($validation->notPassed()) {

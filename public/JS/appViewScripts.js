@@ -33,8 +33,6 @@ function Modal() {
   let firstFocusableElement;
   let lastFocusableElement;
 
-  
-
   showBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       modal.show();

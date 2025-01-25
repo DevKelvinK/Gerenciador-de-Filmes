@@ -8,7 +8,7 @@
   <section class="grid grid-cols-4 gap-6">
     <?php
     foreach ($movies as $movie) {
-      require "./src/views/partials/_cardMovie.php";
+      require "../src/views/partials/_cardMovie.php";
     }
     ?>
 

@@ -24,6 +24,6 @@
 
   <!-- Imagem -->
   <div class="absolute w-full h-full overflow-hidden rounded-xl">
-    <img src="/public/assets/images/covers/<?= $movie->cover ?>" alt="Capa do filme" class="object-cover group-hover:scale-110 group-focus:scale-110 transition-transform duration-[400ms]">
+    <img src="assets/images/covers/<?= $movie->cover ?>" alt="Capa do filme" class="object-cover group-hover:scale-110 group-focus:scale-110 transition-transform duration-[400ms]">
   </div>
 </a>

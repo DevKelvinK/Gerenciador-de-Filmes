@@ -1,5 +1,4 @@
 <?php
-
 // Mensagens de validações de cada formulário
 $validationsMessages = ($form) ? flash()->get("validations_$form") : flash()->get("validations") ?? null;
 
