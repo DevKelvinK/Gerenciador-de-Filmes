@@ -42,4 +42,4 @@ php -S localhost:8000 -t public/
 
 ## Licença
 
-Este projeto está licenciado sob a [MIT License](LICENSE).
+Este projeto está licenciado sob a [MIT License](https://opensource.org/license/mit).
