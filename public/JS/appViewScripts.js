@@ -12,80 +12,55 @@ function Modal() {
   const modal = document.querySelector("dialog");
   const showBtns = document.querySelectorAll(".showModal");
   const closeBtn = document.querySelector(".closeModal");
-  const isOpen = modal.classList.contains("open");
-
   const overlay = document.querySelector(".overlay");
   const divBlur = document.querySelectorAll(".modalBlur");
   const divOverFlow = document.querySelector(".modalOverFlow");
 
-  if (isOpen) {
-    modal.show();
+  const focusableElements = 'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
+  let firstFocusableElement, lastFocusableElement;
 
-    divBlur.forEach((div) => {
-      div.classList.add("blur-sm");
-    });
+  function openModal() {
+    modal.showModal();
+    divBlur.forEach((div) => div.classList.add("blur-sm"));
+    divOverFlow.classList.add("overflow-hidden");
+    overlay.classList.remove("hidden");
 
-    divOverFlow.classList.toggle("overflow-hidden");
-    overlay.classList.toggle("hidden");
+    const focusableContent = modal.querySelectorAll(focusableElements);
+    firstFocusableElement = focusableContent[0];
+    lastFocusableElement = focusableContent[focusableContent.length - 1];
+    document.addEventListener("keydown", trapFocus);
+    document.activeElement.blur();
   }
 
-  const focusableElements = "button, [href], textarea";
-  let firstFocusableElement;
-  let lastFocusableElement;
-
-  showBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      modal.show();
-
-      divBlur.forEach((div) => {
-        div.classList.toggle("blur-sm");
-      });
-
-      divOverFlow.classList.toggle("overflow-hidden");
-      overlay.classList.toggle("hidden");
-
-      // Começar evento de focar apenas elementos do modal
-      const focusableContent = modal.querySelectorAll(focusableElements);
-      firstFocusableElement = focusableContent[0];
-      lastFocusableElement = focusableContent[focusableContent.length - 1];
-
-      document.addEventListener("keydown", trapFocus);
-
-      // Remover foco automatico do primeiro elemento do modal
-      document.activeElement.blur();
-    });
-  });
-
-  closeBtn.addEventListener("click", () => {
+  function closeModal() {
     modal.close();
-
-    divBlur.forEach((div) => {
-      div.classList.toggle("blur-sm");
-    });
-
-    divOverFlow.classList.toggle("overflow-hidden");
-    overlay.classList.toggle("hidden");
-
-    // Remover evento para focar apenas elementos do modal
+    divBlur.forEach((div) => div.classList.remove("blur-sm"));
+    divOverFlow.classList.remove("overflow-hidden");
+    overlay.classList.add("hidden");
     document.removeEventListener("keydown", trapFocus);
-  });
+  }
 
-  // Função para focar apenas elementos do modal
   function trapFocus(event) {
     if (event.key === "Tab") {
-      if (event.shiftKey) {
-        if (document.activeElement === firstFocusableElement) {
-          lastFocusableElement.focus();
-          event.preventDefault();
-        }
-      } else {
-        if (document.activeElement === lastFocusableElement) {
-          firstFocusableElement.focus();
-          event.preventDefault();
-        }
+      if (event.shiftKey && document.activeElement === firstFocusableElement) {
+        lastFocusableElement.focus();
+        event.preventDefault();
+      } else if (!event.shiftKey && document.activeElement === lastFocusableElement) {
+        firstFocusableElement.focus();
+        event.preventDefault();
       }
     }
   }
+
+  showBtns.forEach((btn) => btn.addEventListener("click", openModal));
+  closeBtn.addEventListener("click", closeModal);
+
+  modal.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    closeModal();
+  });
+
+  modal.addEventListener("close", closeModal);
 }
 document.addEventListener("DOMContentLoaded", Modal);
 
